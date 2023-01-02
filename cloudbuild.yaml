@@ -6,4 +6,7 @@ steps:
        - name: python
          entrypoint: python
          args: ["-m", "pip", "install", "build", "pytest", "Flask", "--user"]
+       - name: python
+         entrypoint: python
+         args: ["main.py", "--user"]
           
