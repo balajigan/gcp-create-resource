@@ -5,13 +5,13 @@ steps:
          args: ["-m", "pip", "install", "--upgrade", "pip"]     
        - name: python
          entrypoint: python
-         args: ["-m", "pip", "install", "build", "pytest", "Flask", "--user"]
-       - name: python
-         entrypoint: python
-         args: ["-m", "pip", "install", "xlrd", "--user"]         
-       - name: python
-         entrypoint: python
-         args: ["-m", "pip", "install", "pandas", "openpyxl", "--user"]                  
+         args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "--user"]
+#       - name: python
+#         entrypoint: python
+#         args: ["-m", "pip", "install", "xlrd", "--user"]         
+#       - name: python
+#         entrypoint: python
+#         args: ["-m", "pip", "install", "pandas", "openpyxl", "--user"]                  
        - name: python
          entrypoint: python
          args: ["main.py", "--user"]
