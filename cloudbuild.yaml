@@ -1,1 +1,9 @@
 # cloudbuild file
+steps:
+       - name: python
+          entrypoint: python
+          args: ["-m", "pip", "install", "--upgrade", "pip"]     
+       - name: python
+          entrypoint: python
+          args: ["-m", "pip", "install", "build", "pytest", "Flask", "--user"]
+          
