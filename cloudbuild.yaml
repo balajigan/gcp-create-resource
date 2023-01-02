@@ -11,7 +11,7 @@ steps:
          args: ["-m", "pip", "install", "xlrd", "--user"]         
        - name: python
          entrypoint: python
-         args: ["-m", "pip", "install", "pandas", "--user"]                  
+         args: ["-m", "pip", "install", "pandas", "openpyxl", "--user"]                  
        - name: python
          entrypoint: python
          args: ["main.py", "--user"]
