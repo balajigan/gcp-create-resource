@@ -19,11 +19,11 @@ steps:
       entrypoint: 'sh'
       args:
       - '-c'
-      - |
-        if [ -d "terraform/" ]; then
+      - | 
+#        if [ -d "terraform/" ]; then
           cd terraform
           echo "Initializing ..."
           terraform init
-        else
-          echo "terraform not available for init"
-        fi
+#        else
+#          echo "terraform not available for init"
+#        fi
