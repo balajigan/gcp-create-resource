@@ -17,4 +17,4 @@ steps:
     - id: 'terraformf init'
       name: 'hashicorp/terraform:1.0.0'
       entrypoint: 'sh'
-      args: ['-c', "cd terraform", terraform init"]
+      args: ['-c', "cd terraform", "terraform init", "cat terraform_commands.txt"]
