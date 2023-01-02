@@ -1,18 +1,16 @@
 # cloudbuild file
 steps:
-       - name: python
-         entrypoint: python
-         args: ["-m", "pip", "install", "--upgrade", "pip"]     
-       - name: python
-         entrypoint: python
-         args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "--user"]
-#       - name: python
-#         entrypoint: python
-#         args: ["-m", "pip", "install", "xlrd", "--user"]         
-#       - name: python
-#         entrypoint: python
-#         args: ["-m", "pip", "install", "pandas", "openpyxl", "--user"]                  
-       - name: python
-         entrypoint: python
-         args: ["main.py", "--user"]
+    - name: python
+      entrypoint: python
+      args: ["-m", "pip", "install", "--upgrade", "pip"]     
+      
+      # install the required packages
+    - name: python
+      entrypoint: python
+      args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "--user"]
+      
+      # Execute the main.py file
+    - name: python
+      entrypoint: python
+      args: ["main.py", "--user"]
           
