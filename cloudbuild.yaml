@@ -22,12 +22,12 @@ steps:
       - |
           if [ -d "terraform/" ]; then
             cd terraform
-            echo "Initializing ..."
+            echo "Available files in terraform folder ..."
             ls
+            echo "Content of terraform_commands.txt file ..."
             cat terraform_commands.txt
+            echo "Initialize terraform ..."
             terraform init
           else
-            echo "Not available for init"
+            echo "terraform folder is Not available ..."
           fi      
-#      args: ['-c', "cd terraform", "terraform init", "cat terraform_commands.txt"]
-#      args: ['-c', "cd terraform", "ls"]
