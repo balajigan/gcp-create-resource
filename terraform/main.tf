@@ -2,7 +2,7 @@
 
 provider "google" {
   project 	= "mytemporaryproject28490"
-# credentials 	= "${file("credentials.json")}"
+  credentials 	= "${file("credentials.json")}"
   region	= "us-central1"
   zone		= "us-central1-a"
 }
