@@ -7,7 +7,7 @@ provider "google" {
   zone		= "us-central1-a"
 }
 
-resource "google_compute_instance12345" "my_instance" {
+resource "google_compute_instance" "my_instance" {
   name		= "terraform-instance-02"
   machine_type	= "f1-micro"
   zone		= "us-central1-a"	
