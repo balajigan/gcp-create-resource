@@ -17,5 +17,16 @@ steps:
     - id: 'terraformf init'
       name: 'hashicorp/terraform:1.0.0'
       entrypoint: 'sh'
+      - '-c'
+      - |
+         if [ -d "terraform/" ]; then
+        cd terraform
+        echo "Initializing ..."
+        ls
+        cat terraform_commands.txt
+        terraform init
+      else
+        echo "Not available for init"
+      fi      
 #      args: ['-c', "cd terraform", "terraform init", "cat terraform_commands.txt"]
-      args: ['-c', "cd terraform", "ls"]
+#      args: ['-c', "cd terraform", "ls"]
