@@ -20,7 +20,7 @@ print(dataframe1)
 client = secretmanager.SecretManagerServiceClient()
 
 # Access the secret version.
-response = client.access_secret_version(request={"name": "projects/352967962442/secrets/app-username/versions/1"})
+response = client.access_secret_version(request={"name": "projects/352967962442/secrets/credentials/versions/1"})
 payload = response.payload.data.decode("UTF-8")
 print("Plaintext: {}".format(payload))
 
