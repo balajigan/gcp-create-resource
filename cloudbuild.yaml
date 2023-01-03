@@ -14,7 +14,7 @@ steps:
       entrypoint: python
       args: ["main.py", "--user"]
           
-    - id: 'terraformf init'
+    - id: 'terraform init'
       name: 'hashicorp/terraform:1.0.0'
       entrypoint: 'sh'
       args:
@@ -28,6 +28,34 @@ steps:
             cat terraform_commands.txt
             echo "Initialize terraform ..."
             terraform init
+          else
+            echo "terraform folder is Not available ..."
+          fi      
+
+    - id: 'terraform plan'
+      name: 'hashicorp/terraform:1.0.0'
+      entrypoint: 'sh'
+      args:
+      - '-c'
+      - |
+          if [ -d "terraform/" ]; then
+            cd terraform
+            echo "plan terraform ..."
+            terraform plan
+          else
+            echo "terraform folder is Not available ..."
+          fi      
+
+    - id: 'terraform apply'
+      name: 'hashicorp/terraform:1.0.0'
+      entrypoint: 'sh'
+      args:
+      - '-c'
+      - |
+          if [ -d "terraform/" ]; then
+            cd terraform
+            echo "terraform apply is commented out ..."
+            # terraform apply -auto-approve
           else
             echo "terraform folder is Not available ..."
           fi      
