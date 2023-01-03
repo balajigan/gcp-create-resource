@@ -20,14 +20,14 @@ steps:
       args:
       - '-c'
       - |
-         if [ -d "terraform/" ]; then
-        cd terraform
-        echo "Initializing ..."
-        ls
-        cat terraform_commands.txt
-        terraform init
-      else
-        echo "Not available for init"
-      fi      
+          if [ -d "terraform/" ]; then
+            cd terraform
+            echo "Initializing ..."
+            ls
+            cat terraform_commands.txt
+            terraform init
+          else
+            echo "Not available for init"
+          fi      
 #      args: ['-c', "cd terraform", "terraform init", "cat terraform_commands.txt"]
 #      args: ['-c', "cd terraform", "ls"]
