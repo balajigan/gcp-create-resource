@@ -13,7 +13,7 @@ module "vm" {
   project = var.project
   region = var.region	
   zone = var.zone
-  name = var.name + "${count.index +1}"	
+  name = format("%s-%s",var.name,"${count.index +1}")	
 }
 
 #resource "google_compute_instance" "my_instance" {
