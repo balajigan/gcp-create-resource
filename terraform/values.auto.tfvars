@@ -2,4 +2,4 @@
 project 	= "mytemporaryproject28490"
 region	  = "us-central1"
 zone		  = "us-central1-a"
-name		  = "sample-instance-200"
+name		  = "sample-mod-inst-100"
