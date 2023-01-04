@@ -9,10 +9,11 @@ provider "google" {
 
 module "vm" {
   source  = "./modules/vm"
+  count = 2
   project = var.project
   region = var.region	
   zone = var.zone
-  name = var.name	
+  name = var.name + "${count.index +1}"	
 }
 
 #resource "google_compute_instance" "my_instance" {
