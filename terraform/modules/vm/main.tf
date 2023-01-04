@@ -1,5 +1,7 @@
 # Module for vm
-resource "google_compute_instance" "my_instance" {
+resource "google_compute_instance" "vm" {
+  provider            = google
+  project             = var.project	
   name		= var.name	
   machine_type	= "f1-micro"
   zone		= "us-central1-a"	
