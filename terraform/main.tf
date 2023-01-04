@@ -29,3 +29,11 @@ resource "google_compute_instance" "my_instance" {
 	}
  }
 }
+
+module "vm" {
+  source  = "./modules/vm"
+  project = var.project
+  region = var.region	
+  zone = var.zone
+  name = "module-vm-01"	
+}
