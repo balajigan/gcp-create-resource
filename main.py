@@ -10,10 +10,12 @@ print(os.environ)
 
 # read by default sheet of an excel file
 dataframe1 = pd.read_excel('sample.xlsx')
+print(dataframe1.to_dict('records'))
 
 f = open("terraform/terraform_commands.txt", "w")
 f.write("This file is newly created ...")
 f.close()
+print("Raw dataframe = ")
 print(dataframe1)
 
 # Create the Secret Manager client.
