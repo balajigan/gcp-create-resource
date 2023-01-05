@@ -18,7 +18,7 @@ f.close()
 print("Raw dataframe = ")
 print(dataframe1)
 
-# Create the Secret Manager client.
+# Create the Secret Manager client....
 client = secretmanager.SecretManagerServiceClient()
 
 # Access the secret version.
