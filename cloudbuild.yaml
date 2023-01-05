@@ -55,7 +55,7 @@ steps:
           if [ -d "terraform/" ]; then
             cd terraform
             echo "terraform apply is commented out ..."
-            terraform apply -auto-approve
+            # terraform apply -auto-approve
           else
             echo "terraform folder is Not available ..."
           fi      
