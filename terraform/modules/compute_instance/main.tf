@@ -14,13 +14,13 @@ resource "google_compute_instance" "my_instance" {
   allow_stopping_for_update	= true
 
  boot_disk = {
-	initialize_params {
+	initialize_params = {
 		image = "debian-10-buster-v20220719"
 	}
    }
   network_interface = {
 	network = "default"
-	access_config {
+	access_config = {
 	}
  }
 }
