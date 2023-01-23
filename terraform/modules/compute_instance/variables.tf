@@ -20,3 +20,7 @@ variable "machine_type" {
   type        = string
   description = "Machine type to be created"
 }
+variable "boot_disk_image" {
+  type        = string
+  description = "Boot disk image to be created"
+}
