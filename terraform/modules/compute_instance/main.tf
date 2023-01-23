@@ -15,7 +15,7 @@ resource "google_compute_instance" "my_instance" {
 
  boot_disk {
 	initialize_params {
-		image = "debian-10-buster-v20220719"
+		image = var.boot_disk_image
 	}
    }
   network_interface {
