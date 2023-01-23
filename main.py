@@ -6,15 +6,6 @@ import shutil
 from google.cloud import secretmanager
 
 print ("main.py started ...")
-#print(os.environ)
-
-# read by default sheet of an excel file
-#dataframe1 = pd.read_excel('sample.xlsx')
-#print(dataframe1.to_dict('records'))
-
-#f = open("terraform/terraform_commands.txt", "w")
-#f.write("This file is newly created ...")
-#f.close()
 
 # Create the Secret Manager client....
 client = secretmanager.SecretManagerServiceClient()
@@ -50,8 +41,18 @@ for index, row in dataframe1.iterrows():
         param = row['Parameter Name'] + '  =   '
         if(row['Data Type'] == 'string'):
             param = param + '"' + row['Values'] + '"'
+            print(param)
+            f.writelines(param + "\n")
+        elif(row['Data Type'] == 'map(string)'):
+            mapStringList = row['Values'].strip()[1:-1].split('\n')
+            for item in mapStringList:
+                if '=' in item:
+                    param = row['Parameter Name'] + '_' + item.strip()
+                    print(param)
+                    f.writelines(param + "\n")
         else:
             param = param + row['Values']
-        print(param)
-        f.writelines(param + "\n")
+            print(param)
+            f.writelines(param + "\n")
 f.close()
+print ("main.py completed...")
