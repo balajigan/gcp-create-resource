@@ -30,8 +30,8 @@ steps:
             terraform init
             echo "Plan terraform ..."
             terraform plan
-            echo "terraform apply is commented out ..."
-#            terraform apply -auto-approve            
+            echo "terraform apply is commented out ..."   
+            ls
           else
             echo "terraform folder is Not available ..."
           fi      
