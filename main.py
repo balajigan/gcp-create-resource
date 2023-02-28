@@ -69,6 +69,8 @@ for resource_type in xls.sheet_names:
                 f.writelines(param + "\n")
     f.close()
     # execute the terraform commands here.
-    os.system('echo terraform\terraform int Terraform commands here')
+    os.system('cd terraform')
+    os.system('ls')
+    os.system('terraform init')
 
 print ("main.py completed...")
