@@ -52,13 +52,6 @@ for resource_type in xls.sheet_names:
                 param = param + '"' + row['Values'] + '"'
                 print(param)
                 f.writelines(param + "\n")
-            elif(row['Data Type'] == 'map(string)ttttt'):
-                mapStringList = row['Values'].strip()[1:-1].split('\n')
-                for item in mapStringList:
-                    if '=' in item:
-                        param = row['Parameter Name'] + '_' + item.strip()
-                        print(param)
-                        f.writelines(param + "\n")
             elif(row['Data Type'] == 'map(string)'):
                 param = param + '"' + row['Values'] + '"'
                 print(param)
@@ -75,4 +68,5 @@ for resource_type in xls.sheet_names:
     os.system("terraform init >> output.txt")
     with open("output.txt", "r") as output_text:
         print(output_text.read())
+        print("Line...")
 print ("main.py completed...")
