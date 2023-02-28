@@ -65,7 +65,7 @@ for resource_type in xls.sheet_names:
     os.system('cd terraform')
     var1 = os.system('ls >> output2.txt')
     print(var1)
-    os.system('terraform init >> output.txt')
+    os.system('terraform >> output.txt')
     with open("output.txt", "r") as output_text:
         print(output_text.read())
         print("Line...")
