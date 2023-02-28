@@ -60,6 +60,13 @@ for resource_type in xls.sheet_names:
                 print(param)
                 f.writelines(param + "\n")
             elif(row['Data Type'] == 'map(string)'):
+                mapStringList = row['Values'].strip()[1:-1].split('\n')
+                for item in mapStringList:
+                    if '=' in item:
+                        param = row['Parameter Name'] + '_' + item.strip()
+                        print(param)
+                        f.writelines(param + "\n")                
+            elif(row['Data Type'] == 'map(string)111111111111111111111'):
                 param = param + '"' + row['Values'] + '"'
                 print(param)
                 f.writelines(param + "\n")
