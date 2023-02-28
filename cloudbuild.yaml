@@ -40,6 +40,9 @@ steps:
                   echo "while loop ..."
                   var=`expr $var + 1`
             done
+            while IFS= read -r line; do
+                  echo "Text read from file: $line"
+            done < main.tf
           else
             echo "terraform folder is Not available ..."
           fi      
