@@ -1,8 +1,8 @@
 # cloudbuild file
 steps:
-    - name: python
-      entrypoint: python
-      args: ["-m", "pip", "install", "--upgrade", "pip"]     
+#    - name: python
+#      entrypoint: python
+#      args: ["-m", "pip", "install", "--upgrade", "pip"]     
       
       # install the required packages
     - name: python
