@@ -74,7 +74,7 @@ for resource_type in xls.sheet_names:
     with open("output.txt", "r") as output_text:
         print(output_text.read())
         print("Line...")
-    tf = Terraform(working_dir='terraform', variables={'count':enter})
+    tf = Terraform(working_dir='terraform', variables={'count':3})
     tf.plan(no_color=IsFlagged, refresh=False, capture_output=True)
     #approve = {"auto-approve": True}
     print(tf.plan())
