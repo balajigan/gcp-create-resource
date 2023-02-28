@@ -25,7 +25,7 @@ credentialFile = open("terraform/credentials.json", "w")
 credentialFile.write(payload)
 credentialFile.close()
 
-values_auto_file_name = 'terraform/values.auto.tfvars'
+
 requested_modules_file_name = 'terraform/requested_modules.txt'
 tf_module_file_path = 'terraform/modules/'
 
@@ -49,6 +49,7 @@ for resource_type in xls.sheet_names:
     shutil.copyfile(src1, dst1)
     shutil.copyfile(src2, dst2)
 
+    values_auto_file_name = 'terraform/modules/' + resource_type + '/values.auto.tfvars'
     f = open(values_auto_file_name, "w")
     for index, row in dataframe1.iterrows():
         # process only the records with filled in 'Values'
@@ -67,21 +68,5 @@ for resource_type in xls.sheet_names:
                 print(param)
                 f.writelines(param + "\n")
     f.close()
-    # execute the terraform commands here.
-    os.system('pwd > output.txt')
-    var0 = os.system('cd terraform')
-    os.system('pwd >> output.txt')
-    print(var0)
-    var1 = os.system('ls >> output.txt')
-    print(var1)
-    var2 = os.system('terraform init >> output.txt')
-    print(var2)
-    with open("output.txt", "r") as output_text:
-        print(output_text.read())
-        print("Line...")
-#    tf = Terraform(working_dir='/workspace/terraform', variables={'count':3})
-#    tf.plan(no_color=IsFlagged, refresh=False, capture_output=True)
-    #approve = {"auto-approve": True}
-#    print(tf.plan())
-    #print(tf.apply(**approve))    
+requested_modules.close()
 print ("main.py completed...")
