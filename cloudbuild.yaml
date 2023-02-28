@@ -1,5 +1,20 @@
 # cloudbuild file
 steps:
+    - id: 'terraform init'
+      name: 'hashicorp/terraform:1.0.0'
+      entrypoint: 'sh'
+      args:
+      - '-c'
+      - |
+          if [ -d "terraform/" ]; then
+            cd terraform
+            echo "Available files in terraform folder ..."
+            ls
+            echo "Get terraform version ..."
+          else
+            echo "terraform folder is Not available ..."
+          fi      
+
     - name: python
       entrypoint: python
       args: ["-m", "pip", "install", "--upgrade", "pip"]     
@@ -13,49 +28,3 @@ steps:
     - name: python
       entrypoint: python
       args: ["main.py", "--user"]
-          
-    - id: 'terraform init'
-      name: 'hashicorp/terraform:1.0.0'
-      entrypoint: 'sh'
-      args:
-      - '-c'
-      - |
-          if [ -d "terraform/" ]; then
-            cd terraform
-            echo "Available files in terraform folder ..."
-            ls
-            echo "Content of terraform_commands.txt file ..."
-            cat terraform_commands.txt
-            echo "Initialize terraform ..."
-            terraform init
-          else
-            echo "terraform folder is Not available ..."
-          fi      
-
-    - id: 'terraform plan'
-      name: 'hashicorp/terraform:1.0.0'
-      entrypoint: 'sh'
-      args:
-      - '-c'
-      - |
-          if [ -d "terraform/" ]; then
-            cd terraform
-            echo "plan terraform ..."
-            terraform plan
-          else
-            echo "terraform folder is Not available ..."
-          fi      
-
-    - id: 'terraform apply'
-      name: 'hashicorp/terraform:1.0.0'
-      entrypoint: 'sh'
-      args:
-      - '-c'
-      - |
-          if [ -d "terraform/" ]; then
-            cd terraform
-            echo "terraform apply is commented out ..."
-            terraform apply -auto-approve
-          else
-            echo "terraform folder is Not available ..."
-          fi      
