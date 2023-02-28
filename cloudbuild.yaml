@@ -1,5 +1,19 @@
 # cloudbuild file
 steps:
+    - name: python
+      entrypoint: python
+      args: ["-m", "pip", "install", "--upgrade", "pip"]     
+      
+      # install the required packages
+    - name: python
+      entrypoint: python
+      args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "google-cloud-secret-manager", "--user"]
+      
+      # Execute the main.py file. This will process the xl file, create required files for terraform and place in 'terraform' folder
+    - name: python
+      entrypoint: python
+      args: ["main.py", "--user"]
+          
     - id: 'terraform init'
       name: 'hashicorp/terraform:1.0.0'
       entrypoint: 'sh'
@@ -10,21 +24,14 @@ steps:
             cd terraform
             echo "Available files in terraform folder ..."
             ls
-            echo "Get terraform version ..."
+            echo "Content of terraform_commands.txt file ..."
+            cat terraform_commands.txt
+            echo "Initialize terraform ..."
+            terraform init
+            echo "Plan terraform ..."
+            terraform plan
+            echo "terraform apply is commented out ..."
+#            terraform apply -auto-approve            
           else
             echo "terraform folder is Not available ..."
           fi      
-
-    - name: python
-      entrypoint: python
-      args: ["-m", "pip", "install", "--upgrade", "pip"]     
-      
-      # install the required packages
-    - name: python
-      entrypoint: python
-      args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "google-cloud-secret-manager", "python-terraform", "--user"]
-      
-      # Execute the main.py file. This will process the xl file, create required files for terraform and place in 'terraform' folder
-    - name: python
-      entrypoint: python
-      args: ["main.py", "--user"]
