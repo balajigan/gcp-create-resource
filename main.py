@@ -1,7 +1,7 @@
 
 import pandas as pd
 import os
-import shutil
+#import shutil
 # Import the Secret Manager client library.
 from google.cloud import secretmanager
 #from python_terraform import *
@@ -42,13 +42,13 @@ for resource_type in xls.sheet_names:
     credentialFile.write(payload)
     credentialFile.close()
 
-    src1 = tf_module_file_path + resource_type + '/main.tf'
-    src2 = tf_module_file_path + resource_type + '/variables.tf'
-    dst1 = 'terraform/main.tf'
-    dst2 = 'terraform/variables.tf'
+    # src1 = tf_module_file_path + resource_type + '/main.tf'
+    # src2 = tf_module_file_path + resource_type + '/variables.tf'
+    # dst1 = 'terraform/main.tf'
+    # dst2 = 'terraform/variables.tf'
 
-    shutil.copyfile(src1, dst1)
-    shutil.copyfile(src2, dst2)
+    # shutil.copyfile(src1, dst1)
+    # shutil.copyfile(src2, dst2)
 
     values_auto_file_name = 'terraform/modules/' + resource_type + '/values.auto.tfvars'
     f = open(values_auto_file_name, "w")
