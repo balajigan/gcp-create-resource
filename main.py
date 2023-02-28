@@ -24,8 +24,8 @@ credentialFile = open("terraform/credentials.json", "w")
 credentialFile.write(payload)
 credentialFile.close()
 
-values_auto_file_name = 'terraform\\values.auto.tfvars'
-tf_module_file_path = 'terraform\\modules\\'
+values_auto_file_name = 'terraform/values.auto.tfvars'
+tf_module_file_path = 'terraform/modules/'
 xls = pd.ExcelFile('Infra_variable_sheet.xlsx')
 
 print(xls.sheet_names)
@@ -35,10 +35,10 @@ for resource_type in xls.sheet_names:
     print(resource_type)
     dataframe1 = pd.read_excel('Infra_variable_sheet.xlsx', sheet_name=resource_type, converters={'Parameter Name':str,'Values':str})
 
-    src1 = tf_module_file_path + resource_type + '\\main.tf'
-    src2 = tf_module_file_path + resource_type + '\\variables.tf'
-    dst1 = 'terraform\\main.tf'
-    dst2 = 'terraform\\variables.tf'
+    src1 = tf_module_file_path + resource_type + '/main.tf'
+    src2 = tf_module_file_path + resource_type + '/variables.tf'
+    dst1 = 'terraform/main.tf'
+    dst2 = 'terraform/variables.tf'
 
     shutil.copyfile(src1, dst1)
     shutil.copyfile(src2, dst2)
