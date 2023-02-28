@@ -21,12 +21,7 @@ response = client.access_secret_version(request={"name": "projects/352967962442/
 payload = response.payload.data.decode("UTF-8")
 print(payload)
 
-#credentialFile = open("terraform/credentials.json", "w")
-#credentialFile.write(payload)
-#credentialFile.close()
-
-
-requested_modules_file_name = 'terraform/requested_modules.txt'
+requested_modules_file_name = 'requested_modules.txt'
 tf_module_file_path = 'terraform/modules/'
 
 xls = pd.ExcelFile('Infra_variable_sheet.xlsx')
