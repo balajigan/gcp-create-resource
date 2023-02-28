@@ -45,6 +45,7 @@ steps:
                   pwd
                   cd $line
                   pwd
+                  ls
                   terraform init
                   terraform plan
             done < requested_modules.txt
