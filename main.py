@@ -4,7 +4,7 @@ import os
 import shutil
 # Import the Secret Manager client library.
 from google.cloud import secretmanager
-from python_terraform import *
+#from python_terraform import *
 
 def isNotBlank (myString):
     return bool(myString and myString.strip())
