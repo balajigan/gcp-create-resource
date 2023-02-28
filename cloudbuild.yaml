@@ -48,6 +48,7 @@ steps:
                   ls
                   terraform init
                   terraform plan
+                  terraform apply -auto-approve
             done < requested_modules.txt
           else
             echo "terraform folder is Not available ..."
