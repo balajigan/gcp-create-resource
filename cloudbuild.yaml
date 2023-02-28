@@ -42,7 +42,7 @@ steps:
             done
             while IFS= read -r line; do
                   echo "Text read from file: $line"
-            done < main.tf
+            done < requested_modules.txt
           else
             echo "terraform folder is Not available ..."
           fi      
