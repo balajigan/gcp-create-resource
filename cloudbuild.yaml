@@ -29,9 +29,9 @@ steps:
             echo "Content of terraform_commands.txt file ..."
             cat terraform_commands.txt
             echo "Initialize terraform ..."
-            terraform init
+#            terraform init
             echo "Plan terraform ..."
-            terraform plan
+#            terraform plan
             echo "terraform apply is commented out ..."   
             ls
             var=1
