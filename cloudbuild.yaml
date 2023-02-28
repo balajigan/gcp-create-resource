@@ -21,7 +21,9 @@ steps:
       - '-c'
       - |
           if [ -d "terraform/" ]; then
+            pwd
             cd terraform
+            pwd
             echo "Available files in terraform folder ..."
             ls
             echo "Content of terraform_commands.txt file ..."
