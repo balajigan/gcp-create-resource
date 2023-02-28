@@ -21,9 +21,9 @@ response = client.access_secret_version(request={"name": "projects/352967962442/
 payload = response.payload.data.decode("UTF-8")
 print(payload)
 
-credentialFile = open("terraform/credentials.json", "w")
-credentialFile.write(payload)
-credentialFile.close()
+#credentialFile = open("terraform/credentials.json", "w")
+#credentialFile.write(payload)
+#credentialFile.close()
 
 
 requested_modules_file_name = 'terraform/requested_modules.txt'
@@ -41,6 +41,12 @@ for resource_type in xls.sheet_names:
     dataframe1 = pd.read_excel('Infra_variable_sheet.xlsx', sheet_name=resource_type, converters={'Parameter Name':str,'Values':str})
 
     requested_modules.writelines('/workspace/terraform/modules/' + resource_type + "\n")
+    
+    credentialFileName = 'terraform/modules/'+ resource_type + '/credentials.json'
+    credentialFile = open(credentialFileName, "w")
+    credentialFile.write(payload)
+    credentialFile.close()
+
     src1 = tf_module_file_path + resource_type + '/main.tf'
     src2 = tf_module_file_path + resource_type + '/variables.tf'
     dst1 = 'terraform/main.tf'
