@@ -34,11 +34,11 @@ steps:
             terraform plan
             echo "terraform apply is commented out ..."   
             ls
-            var = 5
+            var=5
             while [ "$var" -lt 1 ]
             do
                   echo "while"
-                  var =`expr $var - 1`
+                  var=`expr $var - 1`
             done
           else
             echo "terraform folder is Not available ..."
