@@ -1,53 +1,33 @@
 # cloudbuild file
 steps:
-#    - name: python
-#      entrypoint: python
-#      args: ["-m", "pip", "install", "--upgrade", "pip"]     
-      
       # install the required packages
     - name: python
       entrypoint: python
       args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "google-cloud-secret-manager", "--user"]
       
-      # Execute the main.py file. This will process the xl file, create required files for terraform and place in 'terraform' folder
+      # Execute the main.py file. This will process the xl file, create required files for terraform
     - name: python
       entrypoint: python
       args: ["main.py", "--user"]
           
-    - id: 'terraform init'
+    - id: 'terraform'
       name: 'hashicorp/terraform:1.0.0'
       entrypoint: 'sh'
       args:
       - '-c'
       - |
           if [ -d "terraform/" ]; then
-            pwd
-            cd terraform
-            pwd
-            echo "Available files in terraform folder ..."
-            ls
-            echo "Content of terraform_commands.txt file ..."
-            cat terraform_commands.txt
-            echo "Initialize terraform ..."
-            # terraform init
-            echo "Plan terraform ..."
-            # terraform plan
-            echo "terraform apply is commented out ..."   
-            ls
-            var=1
-            while [ "$var" -lt 5 ]
-            do
-                  echo "while loop ..."
-                  var=`expr $var + 1`
-            done
             while IFS= read -r line; do
-                  echo "Text read from file: $line"
+                  echo "Execution for resource : $line"
                   pwd
                   cd $line
                   pwd
                   ls
+                  echo "Executing terraform initialize command"
                   terraform init
+                  echo "Executing terraform plan command"
                   terraform plan
+                  echo "Executing terraform apply command"
                   terraform apply -auto-approve
             done < requested_modules.txt
           else
