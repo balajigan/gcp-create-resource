@@ -42,6 +42,11 @@ steps:
             done
             while IFS= read -r line; do
                   echo "Text read from file: $line"
+                  pwd
+                  cd line
+                  pwd
+                  terraform init
+                  terraform plan
             done < requested_modules.txt
           else
             echo "terraform folder is Not available ..."
