@@ -4,6 +4,7 @@ import os
 import shutil
 # Import the Secret Manager client library.
 from google.cloud import secretmanager
+from python_terraform import *
 
 def isNotBlank (myString):
     return bool(myString and myString.strip())
@@ -73,4 +74,9 @@ for resource_type in xls.sheet_names:
     with open("output.txt", "r") as output_text:
         print(output_text.read())
         print("Line...")
+    tf = Terraform(working_dir='terraform', variables={'count':enter})
+    tf.plan(no_color=IsFlagged, refresh=False, capture_output=True)
+    #approve = {"auto-approve": True}
+    print(tf.plan())
+    #print(tf.apply(**approve))    
 print ("main.py completed...")
