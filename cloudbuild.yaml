@@ -22,7 +22,7 @@ steps:
       # install the required packages
     - name: python
       entrypoint: python
-      args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "google-cloud-secret-manager", "--user"]
+      args: ["-m", "pip", "install", "build", "pytest", "Flask", "xlrd", "pandas", "openpyxl", "google-cloud-secret-manager", "terraform", "--user"]
       
       # Execute the main.py file. This will process the xl file, create required files for terraform and place in 'terraform' folder
     - name: python
