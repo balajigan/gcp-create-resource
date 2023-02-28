@@ -1,10 +1,7 @@
 
 import pandas as pd
 import os
-#import shutil
-# Import the Secret Manager client library.
 from google.cloud import secretmanager
-#from python_terraform import *
 
 def isNotBlank (myString):
     return bool(myString and myString.strip())
@@ -19,19 +16,17 @@ client = secretmanager.SecretManagerServiceClient()
 # Access the secret version.
 response = client.access_secret_version(request={"name": "projects/352967962442/secrets/credentials/versions/1"})
 payload = response.payload.data.decode("UTF-8")
-print(payload)
+#print(payload)
 
 requested_modules_file_name = 'requested_modules.txt'
 tf_module_file_path = 'terraform/modules/'
 
 xls = pd.ExcelFile('Infra_variable_sheet.xlsx')
-
 print(xls.sheet_names)
 
 requested_modules = open(requested_modules_file_name, "w")
 
 for resource_type in xls.sheet_names:
-    print("")
     print(resource_type)
     dataframe1 = pd.read_excel('Infra_variable_sheet.xlsx', sheet_name=resource_type, converters={'Parameter Name':str,'Values':str})
 
@@ -41,14 +36,6 @@ for resource_type in xls.sheet_names:
     credentialFile = open(credentialFileName, "w")
     credentialFile.write(payload)
     credentialFile.close()
-
-    # src1 = tf_module_file_path + resource_type + '/main.tf'
-    # src2 = tf_module_file_path + resource_type + '/variables.tf'
-    # dst1 = 'terraform/main.tf'
-    # dst2 = 'terraform/variables.tf'
-
-    # shutil.copyfile(src1, dst1)
-    # shutil.copyfile(src2, dst2)
 
     values_auto_file_name = 'terraform/modules/' + resource_type + '/values.auto.tfvars'
     f = open(values_auto_file_name, "w")
