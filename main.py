@@ -26,16 +26,21 @@ credentialFile.write(payload)
 credentialFile.close()
 
 values_auto_file_name = 'terraform/values.auto.tfvars'
+requested_modules_file_name = 'terraform/requested_modules.txt'
 tf_module_file_path = 'terraform/modules/'
+
 xls = pd.ExcelFile('Infra_variable_sheet.xlsx')
 
 print(xls.sheet_names)
+
+requested_modules = open(requested_modules_file_name, "w")
 
 for resource_type in xls.sheet_names:
     print("")
     print(resource_type)
     dataframe1 = pd.read_excel('Infra_variable_sheet.xlsx', sheet_name=resource_type, converters={'Parameter Name':str,'Values':str})
 
+    requested_modules.writelines('/workspace/terraform/modules/' + resource_type + "\n")
     src1 = tf_module_file_path + resource_type + '/main.tf'
     src2 = tf_module_file_path + resource_type + '/variables.tf'
     dst1 = 'terraform/main.tf'
