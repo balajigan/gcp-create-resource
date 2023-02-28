@@ -64,7 +64,7 @@ for resource_type in xls.sheet_names:
     # execute the terraform commands here.
     os.system('pwd >> output.txt')
     var0 = os.system('cd terraform')
-        os.system('pwd > output.txt')
+    os.system('pwd > output.txt')
     print(var0)
     var1 = os.system('ls > output.txt')
     print(var1)
